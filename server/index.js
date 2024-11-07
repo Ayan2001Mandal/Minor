@@ -21,6 +21,9 @@ app.use(express.json());
 app.use(cors());
 
 //routes
+app.get('/', (req, res) => {
+    res.status(200).send('Hello from the server side!');
+});
 app.use('/api/auth', authRoutes);
 app.use('/api/user', userRoutes);
 app.use('/api/data', resumeRoutes);
