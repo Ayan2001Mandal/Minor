@@ -6,7 +6,9 @@
 }
 :root {
   --btnColor: #f2d342;
+  --btnColorSecondary: #3260f5;
   --landBtnHover: #ebca37;
+  --landBtnHoverSecondary: #606ef1;
   --bgColor: #ffffff;
   --cardBg: #fff;
   --btn: #a6dae7;

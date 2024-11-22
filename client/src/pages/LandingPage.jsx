@@ -97,6 +97,10 @@ export default function LandingPage() {
     const handleGetStarted = () => {
         navigate('/profile');
     };
+    
+    const goToJobPortal = () => {
+        navigate('/');
+    };
 
     return (
         <ThemeProvider theme={theme}>
@@ -132,16 +136,20 @@ export default function LandingPage() {
                                     transition={{ duration: 1, delay: 0.5 }}
                                 >
                                     <Typography variant="h5" component="h1" gutterBottom>
-                                        Create a resume that stands out with our easy-to-use builder
+                                        Create a resume that stands out with our easy-to-use builder and check out our job portal.
                                     </Typography>
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
                                     transition={{ duration: 1, delay: 1 }}
+                                    className='button-container'
                                 >
                                     <Button onClick={handleGetStarted} variant='outlined' sx={{ borderRadius: '30px', color: 'black', backgroundColor: "var(--btnColor)", "&:hover": { backgroundColor: "var(--landBtnHover)", border: 'none' }, border: 'none', fontWeight: 600 }} size="large">
                                         Get Started
+                                    </Button>
+                                    <Button onClick={goToJobPortal} variant='outlined' sx={{ borderRadius: '30px', color: 'white', backgroundColor: "var(--btnColorSecondary)", "&:hover": { backgroundColor: "var(--landBtnHoverSecondary)", border: 'none' }, border: 'none', fontWeight: 600 }} size="large">
+                                        Job Portal
                                     </Button>
                                 </motion.div>
                             </Container>
