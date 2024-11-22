@@ -51,6 +51,11 @@ const Navbar = () => {
     setAnchorEl(null);
   };
 
+  const handleJobPortalClick = () => {
+    navigate('/');
+    setAnchorEl(null);
+  };
+
   const handleClose = () => {
     setAnchorEl(null);
     setSectionsAnchorEl(null);
@@ -193,6 +198,7 @@ const Navbar = () => {
               >
                 <MenuItem onClick={handleProfileClick}>My Profile</MenuItem>
                 <MenuItem onClick={handleTemplateClick}>Templates</MenuItem>
+                <MenuItem onClick={handleJobPortalClick}>Job Portal</MenuItem>
                 <MenuItem onClick={handleContactUsClick}>Contact Us</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
