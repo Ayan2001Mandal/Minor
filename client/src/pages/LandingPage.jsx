@@ -99,7 +99,7 @@ export default function LandingPage() {
     };
     
     const goToJobPortal = () => {
-        navigate('https://jobinsight.vercel.app/');
+        window.open('https://jobinsight.vercel.app/', "_blank", "noopener,noreferrer");
     };
 
     return (
@@ -149,7 +149,7 @@ export default function LandingPage() {
                                         Get Started
                                     </Button>
                                     <Button onClick={goToJobPortal} variant='outlined' sx={{ borderRadius: '30px', color: 'white', backgroundColor: "var(--btnColorSecondary)", "&:hover": { backgroundColor: "var(--landBtnHoverSecondary)", border: 'none' }, border: 'none', fontWeight: 600 }} size="large">
-                                        Job Portal
+                                        Job Insight
                                     </Button>
                                 </motion.div>
                             </Container>

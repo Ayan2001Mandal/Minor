@@ -52,7 +52,7 @@ const Navbar = () => {
   };
 
   const handleJobPortalClick = () => {
-    navigate('https://jobinsight.vercel.app/');
+    window.open('https://jobinsight.vercel.app/', "_blank", "noopener,noreferrer");
     setAnchorEl(null);
   };
 
@@ -198,7 +198,7 @@ const Navbar = () => {
               >
                 <MenuItem onClick={handleProfileClick}>My Profile</MenuItem>
                 <MenuItem onClick={handleTemplateClick}>Templates</MenuItem>
-                <MenuItem onClick={handleJobPortalClick}>Job Portal</MenuItem>
+                <MenuItem onClick={handleJobPortalClick}>Job Insight</MenuItem>
                 <MenuItem onClick={handleContactUsClick}>Contact Us</MenuItem>
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
