@@ -19,7 +19,6 @@ app.use(express.json());
 //middlewares
 const whitelist = [
   "http://localhost:5173",
-  "https://fastcv.vercel.app",
   process.env.BASE_URL,
 ];
 const corsOptions = {
