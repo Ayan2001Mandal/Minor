@@ -40,6 +40,7 @@ export default function SignIn() {
         {
           headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "https://fastcv.vercel.app",
           },
         }
       );
