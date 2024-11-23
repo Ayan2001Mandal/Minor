@@ -99,7 +99,7 @@ export default function LandingPage() {
     };
     
     const goToJobPortal = () => {
-        navigate('/');
+        navigate('https://jobinsight.vercel.app/');
     };
 
     return (

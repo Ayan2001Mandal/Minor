@@ -52,7 +52,7 @@ const Navbar = () => {
   };
 
   const handleJobPortalClick = () => {
-    navigate('/');
+    navigate('https://jobinsight.vercel.app/');
     setAnchorEl(null);
   };
 
