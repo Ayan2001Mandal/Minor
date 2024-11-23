@@ -24,7 +24,7 @@ export default function SignIn() {
             const auth = getAuth(app);
             const result = await signInWithPopup(auth, provider);
 
-            // console.log("Signing up basically: ", result?.user);
+            console.log("Signing up basically: ", result?.user);
             const formData = {
                 username: result?.user?.displayName,
                 email: result?.user?.email,
