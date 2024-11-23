@@ -18,7 +18,7 @@ dotenv.config();
 app.use(express.json());
 //middlewares
 const corsOptions = {
-  origin: "https://fastcv.vercel.app/",
+  origin: ["*", "http://localhost:5173", "https://fastcv.vercel.app/", process.env.BASE_URL],
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   optionSuccessStatus: 200,
 };
