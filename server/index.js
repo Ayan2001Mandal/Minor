@@ -13,12 +13,12 @@ const app = express();
 dotenv.config();
 
 //database config
-//mongoDB();
+mongoDB();
 
 app.use(express.json());
 //middlewares
 const corsOptions = {
-  origin: ["*", "http://localhost:5173", "https://fastcv.vercel.app/", process.env.BASE_URL],
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   withCredentials: true,
   optionSuccessStatus: 200,
@@ -50,6 +50,6 @@ app.listen(process.env.PORT, () => {
   // console.log(`Server is working on http://localhost:${process.env.PORT}`);
 });
 
-mongoDB();
+// mongoDB();
 //mongoose.connect(process.env.MONGO_URL).then(res=>console.log('DATABASE CONNECTED'))
 //.catch(err=>console.log('somthong kalajadu happen'))  //connect to database
