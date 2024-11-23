@@ -46,6 +46,7 @@ const Education = () => {
 
   const engineeringFields = [
     "CS",
+    "Computer Application",
     "IT",
     "EnTC",
     "Electrical",
@@ -53,10 +54,10 @@ const Education = () => {
     "Civil",
     "Chemical",
   ];
-  const otherFields = ["B.E.", "B.Tech", "BCA", "Bsc", "MBA", "M.Tech"];
+  const otherFields = ["MCA", "B.E.", "B.Tech", "BCA", "Bsc", "MBA", "M.Tech"];
 
-  const higherCollegeBoard = ["Maharashtra State Board", "CBSE", "ICSE", "Diploma"];
-  const schoolBoard = ["Maharashtra State Board", "CBSE", "ICSE"];
+  const higherCollegeBoard = ["Maharashtra State Board", "CBSE", "ICSE", "Diploma", "WBCHES"];
+  const schoolBoard = ["Maharashtra State Board", "CBSE", "ICSE", "WBBSE"];
 
   return (
     <div style={containerStyle}>
@@ -116,7 +117,7 @@ const Education = () => {
                   <MenuItem value="F.E">F.E</MenuItem>
                   <MenuItem value="S.E">S.E</MenuItem>
                   <MenuItem value="T.E">T.E</MenuItem>
-                  <MenuItem value="B.E">B.E</MenuItem>
+                  <MenuItem value="B.E">F.E</MenuItem>
                   <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
                 </TextField>
               </Grid>
