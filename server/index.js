@@ -17,8 +17,19 @@ mongoDB();
 
 app.use(express.json());
 //middlewares
+const whitelist = [
+  "http://localhost:5173",
+  "https://fastcv.vercel.app",
+  process.env.BASE_URL,
+];
 const corsOptions = {
-  origin: process.env.BASE_URL,
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   withCredentials: true,
   optionSuccessStatus: 200,
