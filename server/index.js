@@ -18,7 +18,7 @@ mongoDB();
 app.use(express.json());
 //middlewares
 const corsOptions = {
-  origin: "*",
+  origin: process.env.BASE_URL,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   withCredentials: true,
   optionSuccessStatus: 200,
