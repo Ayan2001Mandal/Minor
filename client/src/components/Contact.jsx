@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Container,
   Typography,
@@ -6,7 +5,7 @@ import {
   Card,
   CardContent,
 } from "@mui/material";
-import { Call, MailOutline, LinkedIn } from "@mui/icons-material";
+import { Call, MailOutline, GitHub } from "@mui/icons-material";
 
 const Contact = () => {
   const handleSocialMediaClick = (url) => {
@@ -27,7 +26,7 @@ const Contact = () => {
     >
       <Card
         sx={{
-          maxWidth: 400,
+          maxWidth: 500,
           margin: "auto",
           borderRadius: 4,
           padding: 3,
@@ -56,7 +55,7 @@ const Contact = () => {
             >
               <Call />
             </IconButton>
-            <Typography>Phone: 9356678182</Typography>
+            <Typography>Phone: 9874304828</Typography>
           </div>
 
           <div
@@ -76,7 +75,7 @@ const Contact = () => {
             >
               <MailOutline />
             </IconButton>
-            <Typography>Email: abhijitkhyade@gmail.com</Typography>
+            <Typography>Email: aryeshsaha5302@gmail.com</Typography>
           </div>
 
           <div
@@ -96,13 +95,13 @@ const Contact = () => {
               }}
               onClick={() =>
                 handleSocialMediaClick(
-                    "https://www.linkedin.com/in/abhijit-khyade-954b9324b"
+                    "https://github.com/AryeshSaha"
                 )
               }
             >
-              <LinkedIn />
+              <GitHub />
             </IconButton>
-            <Typography>Linkden</Typography>
+            <Typography>GitHub</Typography>
           </div>
         </CardContent>
       </Card>
