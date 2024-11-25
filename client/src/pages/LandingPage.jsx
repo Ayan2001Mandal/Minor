@@ -108,14 +108,14 @@ export default function LandingPage() {
                 <div style={{ color: 'black' }}>
                     <div className="img-container">
                         <div className="image-container-1">
-                            <img src={img1} alt="image1" className="image-style-1" />
+                            {/* <img src={img1} alt="image1" className="image-style-1" /> */}
                         </div>
                         <div className="image-container-2">
-                            <img src={img2} alt="image1" className="image-style-2" />
+                            {/* <img src={img2} alt="image1" className="image-style-2" /> */}
                         </div>
 
                         <div className="image-container-3">
-                            <img src={img3} alt="image1" className="image-style-3" />
+                            {/* <img src={img3} alt="image1" className="image-style-3" /> */}
                         </div>
                     </div>
                     <div >

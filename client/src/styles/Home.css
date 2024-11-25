@@ -15,7 +15,6 @@
     /* Increase font size */
     margin: 0;
     padding: 30px;
-    background: linear-gradient(to right, #ffcc00, #ff6666, #66ff66);
     /* Use specified linear gradient for text colors */
     -webkit-background-clip: text;
     background-clip: text;
