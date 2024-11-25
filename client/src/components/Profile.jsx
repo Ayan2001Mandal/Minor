@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  Button,
   Card,
   CardContent,
   CardHeader,
@@ -18,18 +19,54 @@ import PersonIcon from "@mui/icons-material/Person";
 import HomeIcon from "@mui/icons-material/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { updateProfile } from "../redux/profileSlice";
-import { Link } from 'react-router-dom';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import { Link, useNavigate } from "react-router-dom";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { validateFields } from "../utils/validateFields";
 
 const Profile = () => {
   const dispatch = useDispatch();
   const currentProfile = useSelector((state) => state.profileDetails);
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
 
   // console.log("Profilepage:", currentProfile);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     dispatch(updateProfile({ [name]: value }));
+
+    // Clear the specific error for this field
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "", // Clear the error for the updated field
+    }));
+  };
+
+  /*************  ✨ Codeium Command ⭐  *************/
+  /**
+   * Handles navigation to the next page if the form is valid,
+   * otherwise sets the errors state to be displayed.
+   *
+   * @function
+   * @returns {void}
+   */
+  /******  1371ce29-a162-4fee-87fc-4bdf92bc156b  *******/
+  const handleNavigation = () => {
+    const { isValid, errors } = validateFields({
+      firstName: currentProfile?.firstName,
+      lastName: currentProfile?.lastName,
+      email: currentProfile?.email,
+      mobile: currentProfile?.mobile,
+    });
+
+    if (!isValid) {
+      // Update state to display errors
+      setErrors(errors);
+      return; // Prevent navigation
+    }
+
+    // Navigate to the next page if validation passes
+    navigate("/education");
   };
 
   const containerStyle = {
@@ -65,6 +102,8 @@ const Profile = () => {
                 required
                 value={currentProfile?.firstName}
                 onChange={handleChange}
+                error={!!errors.firstName}
+                helperText={errors.firstName}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -87,6 +126,8 @@ const Profile = () => {
                 required
                 value={currentProfile?.lastName}
                 onChange={handleChange}
+                error={!!errors.lastName}
+                helperText={errors.lastName}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -111,6 +152,8 @@ const Profile = () => {
                 required
                 value={currentProfile?.email}
                 onChange={handleChange}
+                error={!!errors.email}
+                helperText={errors.email}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -126,13 +169,15 @@ const Profile = () => {
               <TextField
                 margin="dense"
                 variant="outlined"
-                type="text"
+                type="number"
                 name="mobile"
                 label="MobileNo"
                 style={{ width: "100%" }}
                 required
                 value={currentProfile?.mobile}
                 onChange={handleChange}
+                error={!!errors.mobile}
+                helperText={errors.mobile}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -142,6 +187,7 @@ const Profile = () => {
                     </InputAdornment>
                   ),
                 }}
+                inputProps={{ maxLength: 10 }}
               />
             </Grid>
           </Grid>
@@ -309,15 +355,14 @@ const Profile = () => {
             </Grid>
           </Grid>
         </div>
-
       </CardContent>
 
-      <Grid container spacing={2} alignItems="center" lg={12} >
+      <Grid container spacing={2} alignItems="center" lg={12}>
         <Grid item md={12} sm={12} xs={12} lg={12} style={containerStyles}>
-          <Link to={'/education'} style={linkStyle}>
+          <Button onClick={handleNavigation} style={linkStyle}>
             <h4>Education Section</h4>
             <ArrowForwardIcon style={iconStyle} />
-          </Link>
+          </Button>
         </Grid>
       </Grid>
     </div>
@@ -325,28 +370,28 @@ const Profile = () => {
 };
 
 const linkStyle = {
-  textDecoration: 'none',
-  color: 'inherit',
-  display: 'flex',
-  justifyContent: 'end',
-  alignItems: 'center',
-  gap: '5px',
-  transition: 'border-radius 0.3s', // Add transition for border-radius
-  borderRadius: '4px', // Initial border-radius
-  padding: '5px', // Add padding for hover effect
+  textDecoration: "none",
+  color: "inherit",
+  display: "flex",
+  justifyContent: "end",
+  alignItems: "center",
+  gap: "5px",
+  transition: "border-radius 0.3s", // Add transition for border-radius
+  borderRadius: "4px", // Initial border-radius
+  padding: "5px", // Add padding for hover effect
 };
 
 const containerStyles = {
-  marginBottom: '20px',
-  display: 'flex',
-  justifyContent: 'end',
-  alignItems: 'center',
+  marginBottom: "20px",
+  display: "flex",
+  justifyContent: "end",
+  alignItems: "center",
   // backgroundColor: 'crimson',
-  marginTop: '20px',
-  paddingRight: '40px',
+  marginTop: "20px",
+  paddingRight: "40px",
 };
 const iconStyle = {
-  verticalAlign: 'middle', // Align icon vertically with text
-  marginLeft: '5px', // Add margin between icon and text
+  verticalAlign: "middle", // Align icon vertically with text
+  marginLeft: "5px", // Add margin between icon and text
 };
 export default Profile;

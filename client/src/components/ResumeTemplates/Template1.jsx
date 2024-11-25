@@ -374,21 +374,21 @@ export default function Template1() {
 
                 {/* Core Subjects */}
 
-                <div className="subjects">
+                {/* <div className="subjects">
                   <div className="heading">Core Subjects</div>
                   <hr />
                   <div className="subject-list">
-                    {/* {extraDetails?.coreSubjects?.map((subject, index) => ( */}
+                    {extraDetails?.coreSubjects?.map((subject, index) => (
                     <ul>
-                      {/* <li key={index}>{subject}</li> */}
+                      <li key={index}>{subject}</li>
                       <li>Data Structures and Algorithms</li>
-                      {/* <li>Object Oriented Programming</li> */}
+                      <li>Object Oriented Programming</li>
                       <li>Database Management System</li>
                       <li>Operating System</li>
                     </ul>
-                    {/* ))} */}
+                     ))} 
                   </div>
-                </div>
+                </div> */}
 
 
               </div>

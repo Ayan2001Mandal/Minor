@@ -13,8 +13,8 @@ import { updateProfile } from '../redux/profileSlice';
 import { updateProject } from '../redux/projectSlice';
 import { updateExperience } from '../redux/experienceSlice';
 import axios from 'axios';
-import { BASE_URL } from '../api';
 import { updateAchievements, updateExtraCoCurricular, updateSkills } from '../redux/extraDetailsSlice';
+import { BASE_URL } from '../utils/api';
 
 const theme = createTheme({
     palette: {

@@ -16,13 +16,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import TemplateIcon from '@mui/icons-material/Description';
 import LogoutIcon from '@mui/icons-material/Logout';
 import axios from 'axios';
-import { BASE_URL } from '../api';
 import '../styles/userProfile.css';
 import { clearEducation } from '../redux/educationSlice';
 import { clearProjects } from '../redux/projectSlice';
 import { clearExperience } from '../redux/experienceSlice';
 import { clearExtraDetails } from '../redux/extraDetailsSlice';
 import { clearProfile } from '../redux/profileSlice';
+import { BASE_URL } from '../utils/api';
 
 export default function UserProfile() {
   const currentUser = useSelector((state) => state.user.currentUser);

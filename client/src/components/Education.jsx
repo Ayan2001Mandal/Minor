@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Button,
   Card,
   CardContent,
   CardHeader,
@@ -17,13 +18,16 @@ import GradeIcon from "@mui/icons-material/Grade";
 
 import { useDispatch, useSelector } from "react-redux";
 import { updateEducation } from "../redux/educationSlice";
-import { Link } from 'react-router-dom';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Link, useNavigate } from "react-router-dom";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { validateFields } from "../utils/validateFields";
 
 const Education = () => {
   const dispatch = useDispatch();
   const education = useSelector((state) => state.educationDetails);
+  const navigate = useNavigate();
+  const [errors, setErrors] = useState({});
 
   // const handleChange = (event) => {
   //   const { name, value } = event.target;
@@ -32,8 +36,34 @@ const Education = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     dispatch(updateEducation({ ...education, [name]: value }));
+
+    // Clear the specific error for this field
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: "", // Clear the error for the updated field
+    }));
   };
 
+  const handleNavigation = () => {
+    const { isValid, errors } = validateFields({
+      college: education?.college,
+      field: education?.field,
+      branch: education?.branch,
+      higherCollege: education?.higherCollege,
+      board1: education?.board1,
+      board2: education?.board2,
+      school: education?.school,
+    });
+
+    if (!isValid) {
+      // Update state to display errors
+      setErrors(errors);
+      return; // Prevent navigation
+    }
+
+    // Navigate to the next page if validation passes
+    navigate("/projects");
+  };
 
   const containerStyle = {
     marginTop: "30",
@@ -56,7 +86,13 @@ const Education = () => {
   ];
   const otherFields = ["MCA", "B.E.", "B.Tech", "BCA", "Bsc", "MBA", "M.Tech"];
 
-  const higherCollegeBoard = ["Maharashtra State Board", "CBSE", "ICSE", "Diploma", "WBCHES"];
+  const higherCollegeBoard = [
+    "Maharashtra State Board",
+    "CBSE",
+    "ICSE",
+    "Diploma",
+    "WBCHES",
+  ];
   const schoolBoard = ["Maharashtra State Board", "CBSE", "ICSE", "WBBSE"];
 
   return (
@@ -73,7 +109,7 @@ const Education = () => {
       <CardContent>
         <div>
           {/* College Details */}
-          <Grid container spacing={1} alignItems="center" lg={12} >
+          <Grid container spacing={1} alignItems="center" lg={12}>
             <div>
               <Typography variant="h6" align="left">
                 College/University Details
@@ -90,6 +126,8 @@ const Education = () => {
                   label="College Name"
                   style={{ width: "100%" }}
                   required
+                  error={!!errors.college}
+                  helperText={errors.college}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -118,7 +156,8 @@ const Education = () => {
                   <MenuItem value="S.E">S.E</MenuItem>
                   <MenuItem value="T.E">T.E</MenuItem>
                   <MenuItem value="B.E">F.E</MenuItem>
-                  <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
+                  <MenuItem value="">Clear Selection</MenuItem>{" "}
+                  {/* Add this line */}
                 </TextField>
               </Grid>
               <Grid item md={4} sm={12} xs={12} lg={4}>
@@ -130,6 +169,8 @@ const Education = () => {
                   label="Field of Study"
                   style={{ width: "100%" }}
                   required
+                  error={!!errors.field}
+                  helperText={errors.field}
                   value={education.field}
                   onChange={handleChange}
                 >
@@ -141,7 +182,8 @@ const Education = () => {
                       {field}
                     </MenuItem>
                   ))}
-                  <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
+                  <MenuItem value="">Clear Selection</MenuItem>{" "}
+                  {/* Add this line */}
                 </TextField>
               </Grid>
             </Grid>
@@ -156,6 +198,8 @@ const Education = () => {
                   label="Select Branch"
                   style={{ width: "100%" }}
                   required
+                  error={!!errors.branch}
+                  helperText={errors.branch}
                   value={education.branch}
                   onChange={handleChange}
                 >
@@ -167,7 +211,8 @@ const Education = () => {
                       {field}
                     </MenuItem>
                   ))}
-                  <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
+                  <MenuItem value="">Clear Selection</MenuItem>{" "}
+                  {/* Add this line */}
                 </TextField>
               </Grid>
               <Grid item md={4} sm={12} xs={12} lg={4}>
@@ -295,6 +340,8 @@ const Education = () => {
                   label="College Name"
                   style={{ width: "100%" }}
                   required
+                  error={!!errors.higherCollege}
+                  helperText={errors.higherCollege}
                   InputProps={{
                     endAdornment: (
                       <InputAdornment position="end">
@@ -336,7 +383,8 @@ const Education = () => {
                       {year}
                     </MenuItem>
                   ))}
-                  <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
+                  <MenuItem value="">Clear Selection</MenuItem>{" "}
+                  {/* Add this line */}
                 </TextField>
               </Grid>
               <Grid item md={4} sm={12} xs={12} lg={4}>
@@ -367,7 +415,8 @@ const Education = () => {
                       {year}
                     </MenuItem>
                   ))}
-                  <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
+                  <MenuItem value="">Clear Selection</MenuItem>{" "}
+                  {/* Add this line */}
                 </TextField>
               </Grid>
             </Grid>
@@ -425,6 +474,8 @@ const Education = () => {
                   label="Select Board"
                   style={{ width: "100%" }}
                   required
+                  error={!!errors.board1}
+                  helperText={errors.board1}
                   value={education.board1}
                   onChange={handleChange}
                 >
@@ -436,7 +487,8 @@ const Education = () => {
                       {field}
                     </MenuItem>
                   ))}
-                  <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
+                  <MenuItem value="">Clear Selection</MenuItem>{" "}
+                  {/* Add this line */}
                 </TextField>
               </Grid>
             </Grid>
@@ -460,6 +512,8 @@ const Education = () => {
                   style={{ width: "100%" }}
                   value={education.school}
                   required
+                  error={!!errors.school}
+                  helperText={errors.school}
                   onChange={handleChange}
                   InputProps={{
                     endAdornment: (
@@ -500,7 +554,8 @@ const Education = () => {
                       {year}
                     </MenuItem>
                   ))}
-                  <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
+                  <MenuItem value="">Clear Selection</MenuItem>{" "}
+                  {/* Add this line */}
                 </TextField>
               </Grid>
               <Grid item md={4} sm={12} xs={12} lg={4}>
@@ -531,7 +586,8 @@ const Education = () => {
                       {year}
                     </MenuItem>
                   ))}
-                  <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
+                  <MenuItem value="">Clear Selection</MenuItem>{" "}
+                  {/* Add this line */}
                 </TextField>
               </Grid>
             </Grid>
@@ -589,6 +645,8 @@ const Education = () => {
                   label="Select Board"
                   style={{ width: "100%" }}
                   required
+                  error={!!errors.board2}
+                  helperText={errors.board2}
                   value={education.board2}
                   onChange={handleChange}
                 >
@@ -600,7 +658,8 @@ const Education = () => {
                       {field}
                     </MenuItem>
                   ))}
-                  <MenuItem value="">Clear Selection</MenuItem> {/* Add this line */}
+                  <MenuItem value="">Clear Selection</MenuItem>{" "}
+                  {/* Add this line */}
                 </TextField>
               </Grid>
             </Grid>
@@ -608,16 +667,16 @@ const Education = () => {
         </div>
       </CardContent>
 
-      <Grid container spacing={2} alignItems="center" lg={12} >
+      <Grid container spacing={2} alignItems="center" lg={12}>
         <Grid item md={12} sm={12} xs={12} lg={12} style={containerStyles}>
-          <Link to={'/profile'} style={linkStyle}>
+          <Link to={"/profile"} style={linkStyle}>
             <ArrowBackIcon style={iconStyle} />
             <h4>Profile Section</h4>
           </Link>
-          <Link to={'/projects'} style={linkStyle}>
+          <Button onClick={handleNavigation} style={linkStyle}>
             <h4>Project Section</h4>
             <ArrowForwardIcon style={iconStyle} />
-          </Link>
+          </Button>
         </Grid>
       </Grid>
     </div>
@@ -625,30 +684,30 @@ const Education = () => {
 };
 
 const linkStyle = {
-  textDecoration: 'none',
-  color: 'inherit',
-  display: 'flex',
-  justifyContent: 'end',
-  alignItems: 'center',
-  gap: '5px',
-  transition: 'border-radius 0.3s', // Add transition for border-radius
-  borderRadius: '4px', // Initial border-radius
-  padding: '5px', // Add padding for hover effect
+  textDecoration: "none",
+  color: "inherit",
+  display: "flex",
+  justifyContent: "end",
+  alignItems: "center",
+  gap: "5px",
+  transition: "border-radius 0.3s", // Add transition for border-radius
+  borderRadius: "4px", // Initial border-radius
+  padding: "5px", // Add padding for hover effect
 };
 
 const containerStyles = {
-  marginBottom: '20px',
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
+  marginBottom: "20px",
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
   // backgroundColor: 'crimson',
-  marginTop: '20px',
-  paddingRight: '40px',
-  paddingLeft: '40px',
+  marginTop: "20px",
+  paddingRight: "40px",
+  paddingLeft: "40px",
 };
 const iconStyle = {
-  verticalAlign: 'middle', // Align icon vertically with text
-  marginLeft: '5px', // Add margin between icon and text
+  verticalAlign: "middle", // Align icon vertically with text
+  marginLeft: "5px", // Add margin between icon and text
 };
 
 export default Education;

@@ -3,8 +3,8 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField } 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
-import { BASE_URL } from '../api';
 import { useSelector } from 'react-redux';
+import { BASE_URL } from '../utils/api';
 const Feedback = ({ open, handleClose }) => {
     const [feedback, setFeedback] = useState('');
     const currentUser = useSelector((state) => state.user.currentUser);

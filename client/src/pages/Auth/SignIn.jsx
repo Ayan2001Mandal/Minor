@@ -10,10 +10,10 @@ import {
 } from "../../redux/userSlice";
 import axios from "axios";
 import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { BASE_URL } from "../../api";
+import "react-toastify/dist/ReactToastify.css";;
 import { motion } from "framer-motion";
 import { CircularProgress } from "@mui/material";
+import { BASE_URL } from "../../utils/api";
 
 export default function SignIn() {
   const dispatch = useDispatch();

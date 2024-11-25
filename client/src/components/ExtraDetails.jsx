@@ -38,7 +38,7 @@ import { Link } from "react-router-dom";
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import axios from "axios";
-import { BASE_URL } from "../api";
+import { BASE_URL } from "../utils/api";
 
 const ExtraDetails = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
