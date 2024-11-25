@@ -116,7 +116,7 @@ export default function UserProfile() {
   const sidebarLinks = [
     { text: 'Home', path: '/', icon: <HomeIcon /> },
     { text: 'Edit Resume', path: '/profile', icon: <EditIcon /> },
-    { text: 'Templates', path: '/templates', icon: <TemplateIcon /> },
+    // { text: 'Templates', path: '/templates', icon: <TemplateIcon /> },
     { text: 'Logout', path: '', icon: <LogoutIcon />, action: handleLogout },
   ];
 
@@ -251,9 +251,8 @@ export default function UserProfile() {
                 value={formData.email}
                 disabled
               />
-              <TextField
+              {/* <TextField
                 margin="normal"
-                required
                 fullWidth
                 name="password"
                 label="Password"
@@ -261,7 +260,7 @@ export default function UserProfile() {
                 id="password"
                 onChange={handleChange}
                 value={formData.password}
-              />
+              /> */}
               <Button
                 type="submit"
                 fullWidth
